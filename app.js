@@ -18,7 +18,7 @@ mongoose.connect('mongodb://ashil:Superman1275@ac-gawvbv0-shard-00-00.pzyiuyr.mo
 
 const Team = mongoose.model('Team', new mongoose.Schema(
     {
-        volunteeeId: String,
+        volunteerId: String,
         fullName: String,
         email: String,
         phone: Number,
@@ -33,3 +33,12 @@ const Team = mongoose.model('Team', new mongoose.Schema(
         unitNumber: Number
     }
 ));
+
+app.post('/add-volunteer', async (req, res) => {
+    await Team.create(req.body);
+    res.json({ 'status': 'success' });
+})
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+})
