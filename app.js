@@ -39,6 +39,11 @@ app.post('/add-volunteer', async (req, res) => {
     res.json({ 'status': 'success' });
 })
 
+app.post('/view-volunteers', async (req, res) => {
+    const volunteers = await Team.find();
+    res.json(volunteers);
+})
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 })
